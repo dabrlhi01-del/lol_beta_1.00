@@ -1,0 +1,35 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b132b"><link rel="stylesheet" href="styles.css"><title>LoL 관전 스탯 v2</title></head>
+<body><header class="app-header"><div><h1>LoL 관전 스탯 v2</h1><p id="patchLabel">내장 패치 데이터 로딩 중…</p></div><select id="patchSelect"></select></header>
+<main>
+<section class="card"><div class="section-title"><div><h2>5 vs 5 챔피언</h2><p>각 슬롯은 레벨·아이템·룬을 독립적으로 저장합니다.</p></div></div><div class="team-grid">
+<div><h3>우리 팀</h3><div class="role-labels"><div class="role-label"><span class="role-icon">▲</span>탑</div><div class="role-label"><span class="role-icon">◆</span>정글</div><div class="role-label"><span class="role-icon">●</span>미드</div><div class="role-label"><span class="role-icon">▶</span>원딜</div><div class="role-label"><span class="role-icon">✚</span>서폿</div></div><div id="allySlots" class="slots"></div></div>
+<div><h3>상대 팀</h3><div class="role-labels"><div class="role-label"><span class="role-icon">▲</span>탑</div><div class="role-label"><span class="role-icon">◆</span>정글</div><div class="role-label"><span class="role-icon">●</span>미드</div><div class="role-label"><span class="role-icon">▶</span>원딜</div><div class="role-label"><span class="role-icon">✚</span>서폿</div></div><div id="enemySlots" class="slots"></div></div>
+</div>
+<div class="dragon-zone">
+  <div class="section-title"><div><h3>팀 드래곤</h3><p>획득한 원소 드래곤을 팀별로 입력하면 관련 능력치가 자동 반영됩니다.</p></div></div>
+  <div class="dragon-team-grid">
+    <div class="dragon-panel"><strong>우리 팀</strong><div id="allyDragons" class="dragon-list"></div><div id="allyDragonBuffs" class="team-buffs"></div></div>
+    <div class="dragon-panel"><strong>상대 팀</strong><div id="enemyDragons" class="dragon-list"></div><div id="enemyDragonBuffs" class="team-buffs"></div></div>
+  </div>
+</div>
+</section>
+<section id="editorCard" class="card" hidden>
+<div class="champion-heading"><img id="focusedChampionImage"><div><div class="eyebrow">현재 분석</div><h2 id="focusedChampionName"></h2><p id="focusedChampionTitle"></p></div></div>
+<div id="questPanel" class="quest-panel">
+  <div class="quest-head">
+    <div><div class="eyebrow">포지션 퀘스트</div><strong id="questName"></strong></div>
+    <button id="questToggleBtn" class="ghost">퀘스트 완료</button>
+  </div>
+  <p id="questDesc" class="quest-desc"></p>
+  <div id="questEffects" class="quest-effects"></div>
+</div>
+<div class="level-row"><label>레벨 <strong id="levelValue">1</strong></label><input id="levelRange" type="range" min="1" max="18" value="1"></div>
+<div><h3>최종 능력치</h3><div id="statsGrid" class="stats-grid"></div></div>
+<div class="subsection"><div class="section-title"><div><h3>아이템</h3><p>소환사의 협곡에서 구매 가능한 최신 항목만 표시하고, 동일 이름 중복은 제거합니다.</p></div><button id="clearItemsBtn" class="ghost">초기화</button></div><div id="itemSlots" class="item-slots"></div></div>
+<div class="subsection"><div class="section-title"><div><h3>룬</h3><p>챔피언 슬롯별로 별도 저장됩니다.</p></div><button id="pickRuneBtn" class="ghost">룬 선택</button></div><div id="selectedRune" class="selected-rune empty">선택된 룬 없음</div></div>
+<div class="subsection"><h3>아이템 효과</h3><div id="itemDetails" class="details-list"></div></div>
+<div class="subsection"><h3>스킬 & 예상 피해량</h3><p>스킬 설명은 패치 스냅샷에서 읽습니다. 예상 피해는 Data Dragon에 기계적으로 읽을 수 있는 기본 피해/계수가 있을 때만 계산하며, 조건부 피해·다단히트·특수 패시브는 참고용입니다.</p><div id="skillGrid" class="skill-grid"></div></div>
+</section>
+</main>
+<dialog id="pickerDialog"><form method="dialog" class="dialog-shell"><div class="dialog-header"><div><div id="dialogEyebrow" class="eyebrow">선택</div><h2 id="dialogTitle"></h2></div><button value="cancel" class="ghost">닫기</button></div><input id="pickerSearch" class="search" placeholder="검색"><div id="pickerGrid" class="picker-grid"></div></form></dialog>
+<script src="data/catalog.js"></script><script src="app.js"></script></body></html>
