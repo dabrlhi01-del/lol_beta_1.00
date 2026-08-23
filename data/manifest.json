@@ -1,8 +1,75 @@
 {
-  "current": "16.16.1",
-  "locale": "ko_KR",
-  "generatedAt": "2026-08-23T13:27:01.162Z",
-  "championCount": 173,
-  "itemCount": 615,
-  "runeCount": 62
+  "generatedAt": "2026-08-23T13:31:38.653Z",
+  "patches": [
+    {
+      "display": "26.16",
+      "dataVersion": "16.16.1",
+      "champions": 173,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.15",
+      "dataVersion": "16.15.1",
+      "champions": 233,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.14",
+      "dataVersion": "16.14.1",
+      "champions": 173,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.13",
+      "dataVersion": "16.13.1",
+      "champions": 173,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.12",
+      "dataVersion": "16.12.1",
+      "champions": 172,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.11",
+      "dataVersion": "16.11.1",
+      "champions": 172,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.10",
+      "dataVersion": "16.10.1",
+      "champions": 172,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.9",
+      "dataVersion": "16.9.1",
+      "champions": 172,
+      "items": 221,
+      "runes": 62
+    },
+    {
+      "display": "26.8",
+      "dataVersion": "16.8.1",
+      "champions": 172,
+      "items": 219,
+      "runes": 61
+    },
+    {
+      "display": "26.7",
+      "dataVersion": "16.7.1",
+      "champions": 172,
+      "items": 219,
+      "runes": 61
+    }
+  ]
 }
