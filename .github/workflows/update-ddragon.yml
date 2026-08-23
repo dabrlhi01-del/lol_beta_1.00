@@ -2,38 +2,65 @@ name: Update LoL patch catalog
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "20 2 * * *"
 
 permissions:
   contents: write
 
 jobs:
   update:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
+
         with:
           node-version: "22"
 
-      - name: Build patch catalog
+
+      - name: Build LoL patch catalog
         run: node scripts/update-ddragon.mjs
 
-      - name: Commit patch data
+
+      - name: Check generated files
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "===== manifest.json ====="
+          cat data/manifest.json
 
-          git add data
+          echo ""
+          echo "===== catalog size ====="
+          du -h data/catalog.js
 
-          if git diff --cached --quiet; then
-            echo "No changes"
+
+      - name: Commit updated data
+        run: |
+
+          git config user.name \
+          "github-actions[bot]"
+
+          git config user.email \
+          "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+          data/catalog.js \
+          data/manifest.json
+
+          if git diff --cached --quiet
+          then
+
+            echo "데이터 변경 없음"
+
           else
-            git commit -m "Update LoL patch catalog"
+
+            git commit \
+            -m "Update LoL patch catalog"
+
             git push
+
           fi
