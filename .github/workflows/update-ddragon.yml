@@ -1,4 +1,4 @@
-name: Update Data Dragon snapshot
+name: Update LoL patch catalog
 
 on:
   workflow_dispatch:
@@ -21,17 +21,19 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Download latest Data Dragon snapshot
+      - name: Build patch catalog
         run: node scripts/update-ddragon.mjs
 
-      - name: Commit updated data
+      - name: Commit patch data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add data
+
           if git diff --cached --quiet; then
-            echo "No new Data Dragon version."
+            echo "No changes"
           else
-            git commit -m "Update Data Dragon snapshot"
+            git commit -m "Update LoL patch catalog"
             git push
           fi
