@@ -1,5 +1,8 @@
 {
-  "current": "16.16.1-demo",
+  "current": "16.16.1",
   "locale": "ko_KR",
-  "demo": true
+  "generatedAt": "2026-08-23T12:45:56.287Z",
+  "championCount": 173,
+  "itemCount": 615,
+  "runeCount": 62
 }
