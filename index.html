@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b132b" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>LoL 관전 스탯</title>
+</head>
+<body>
+<header class="app-header">
+  <div>
+    <h1>LoL 관전 스탯</h1>
+    <p id="patchLabel">내장 패치 데이터 로딩 중…</p>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <div class="section-title">
+      <div>
+        <h2>5 vs 5 챔피언</h2>
+        <p>슬롯을 눌러 챔피언을 선택하세요. 선택된 챔피언을 다시 누르면 분석 대상으로 지정됩니다.</p>
+      </div>
+    </div>
+    <div class="team-grid">
+      <div><h3>우리 팀</h3><div id="allySlots" class="slots"></div></div>
+      <div><h3>상대 팀</h3><div id="enemySlots" class="slots"></div></div>
+    </div>
+  </section>
+
+  <section id="editorCard" class="card" hidden>
+    <div class="champion-heading">
+      <img id="focusedChampionImage" alt="" />
+      <div>
+        <div class="eyebrow">현재 분석</div>
+        <h2 id="focusedChampionName"></h2>
+        <p id="focusedChampionTitle"></p>
+      </div>
+    </div>
+
+    <div class="level-row">
+      <label for="levelRange">레벨 <strong id="levelValue">1</strong></label>
+      <input id="levelRange" type="range" min="1" max="18" value="1" />
+    </div>
+
+    <div class="stats-wrap">
+      <h3>최종 능력치</h3>
+      <div id="statsGrid" class="stats-grid"></div>
+    </div>
+
+    <div class="subsection">
+      <div class="section-title">
+        <div><h3>아이템</h3><p>최대 6개. Data Dragon의 정적 스탯을 합산합니다.</p></div>
+        <button id="clearItemsBtn" class="ghost">초기화</button>
+      </div>
+      <div id="itemSlots" class="item-slots"></div>
+    </div>
+
+    <div class="subsection">
+      <div class="section-title">
+        <div><h3>룬</h3><p>룬 설명은 내장 패치 데이터에서 읽습니다.</p></div>
+        <button id="pickRuneBtn" class="ghost">룬 선택</button>
+      </div>
+      <div id="selectedRune" class="selected-rune empty">선택된 룬 없음</div>
+    </div>
+
+    <div class="subsection">
+      <h3>선택한 아이템 효과</h3>
+      <div id="itemDetails" class="details-list"></div>
+    </div>
+  </section>
+
+  <section class="card note">
+    <h3>데이터 방식</h3>
+    <p id="dataModeNote">이 앱은 실행 중 Riot 서버의 JSON API를 호출하지 않습니다. 저장된 패치 스냅샷을 사용합니다.</p>
+  </section>
+</main>
+
+<dialog id="pickerDialog">
+  <form method="dialog" class="dialog-shell">
+    <div class="dialog-header">
+      <div><div id="dialogEyebrow" class="eyebrow">선택</div><h2 id="dialogTitle">챔피언 선택</h2></div>
+      <button value="cancel" class="ghost">닫기</button>
+    </div>
+    <input id="pickerSearch" class="search" type="search" placeholder="검색" autocomplete="off" />
+    <div id="pickerGrid" class="picker-grid"></div>
+  </form>
+</dialog>
+
+<script src="data/current.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
